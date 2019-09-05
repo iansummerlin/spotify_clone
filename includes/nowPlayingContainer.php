@@ -88,19 +88,18 @@
                 $(".albumLink img").attr("src", artwork.artworkPath);
             });
 
-           audioElement.setTrack(track);
+            audioElement.setTrack(track);
+            if (play) {
+                playSong();
+            }
        });
-
-        if (play) {
-            playSong();
-        }
     }
 
     function playSong() {
         if (audioElement.audio.currentTime == 0) {
             $.post("includes/handlers/ajax/updatePlays.php", { songId: audioElement.currentlyPlaying.id });
         }
-        
+
         $(".controlButton.play").hide();
         $(".controlButton.pause").show();
         audioElement.play();
@@ -147,7 +146,7 @@
                     <button class="controlButton pause" title="Pause song" style="display: none;" onclick="pauseSong()">
                         <img src="assets/images/icons/pause.png" alt="Pause song">
                     </button>
-                    <button class="controlButton next" title="Next song">
+                    <button class="controlButton next" title="Next song" onclick="nextSong()">
                         <img src="assets/images/icons/next.png" alt="Next song">
                     </button>
                     <button class="controlButton repeat" title="Repeat song">
