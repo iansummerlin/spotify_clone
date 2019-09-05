@@ -62,9 +62,18 @@
         audioElement.setTime(seconds);
     }
 
+    function nextSong() {
+        (currentIndex == currentPlaylist.length - 1) ? currentIndex = 0 : currentIndex++;
+
+        var trackToPlay = currentPlaylist[currentIndex];
+        setTrack(trackToPlay, currentPlaylist, true);
+    }
+
     function setTrack(trackId, newPlaylist, play) {
 
        $.post("includes/handlers/ajax/getSong.json.php", { songId: trackId }, (data) => {
+            currentIndex = currentPlaylist.indexOf(trackId);
+
             var track = JSON.parse(data);
 
             $(".trackName span").text(track.title);
