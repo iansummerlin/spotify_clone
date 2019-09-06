@@ -1,5 +1,6 @@
 var currentPlaylist = [];
 var shufflePlaylist = [];
+var pagePlaylist = [];
 var audioElement;
 var mouseDown = false;
 var currentIndex = 0;

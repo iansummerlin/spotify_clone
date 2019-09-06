@@ -38,7 +38,7 @@
                 echo "
                     <li class='tracklistRow'>
                         <div class='trackCount'>
-                            <img class='play' src='assets/images/icons/play-white.png'>
+                            <img class='play' src='assets/images/icons/play-white.png' onclick='setTrack(\"" . $albumSong->getId() . "\", pagePlaylist, true)'>
                             <span class='trackNumber'>$i</span>
                         </div>
 
@@ -59,6 +59,11 @@
                 $i++;
             }
         ?>
+
+        <script>
+            var pageSongIds = '<?php echo json_encode($songIdArray); ?>';
+            pagePlaylist = JSON.parse(pageSongIds);
+        </script>
     </ul>
 </div>
 
