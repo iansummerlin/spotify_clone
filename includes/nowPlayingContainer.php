@@ -155,7 +155,7 @@
             if (play) {
                 playSong();
             }
-       });
+        });
     }
 
     function playSong() {
