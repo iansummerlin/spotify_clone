@@ -40,6 +40,10 @@ function updateVolumeProgressBar(audio) {
     $(".volumeBar .progress").css("width", volume + "%");
 }
 
+function playSongFromArtistPage() {
+    setTrack(pagePlaylist[0], pagePlaylist, true);
+}
+
 function Audio() {
 
     this.currentlyPlaying;
