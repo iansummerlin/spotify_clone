@@ -1,13 +1,13 @@
-var currentPlaylist = [];
-var shufflePlaylist = [];
-var pagePlaylist = [];
-var audioElement;
-var mouseDown = false;
-var currentIndex = 0;
-var repeat = false;
-var shuffle = false;
-var userLoggedIn;
-var timer;
+var currentPlaylist = [],
+    shufflePlaylist = [],
+    pagePlaylist = [],
+    audioElement,
+    mouseDown = false,
+    currentIndex = 0,
+    repeat = false,
+    shuffle = false,
+    userLoggedIn,
+    timer;
 
 function openPage(url) {
     if (timer != null) clearTimeout(timer);
@@ -21,10 +21,10 @@ function openPage(url) {
 }
 
 function formatTime(seconds) {
-    var time = Math.round(seconds);
-    var minutes = Math.floor(time / 60);
-    var seconds = time - (minutes * 60);
-    var extraZero = (seconds < 10) ? "0" : "";
+    var time = Math.round(seconds),
+        minutes = Math.floor(time / 60),
+        seconds = time - (minutes * 60),
+        extraZero = (seconds < 10) ? "0" : "";
 
     return minutes + ":" + extraZero + seconds;
 }
@@ -61,9 +61,7 @@ function Audio() {
     });
 
     this.audio.addEventListener("timeupdate", function() {
-        if (this.duration) {
-            updateTimeProgressBar(this);
-        }
+        if (this.duration) updateTimeProgressBar(this);  
     });
 
 
