@@ -148,7 +148,7 @@ body {
 .navBar .logo img {
     width: 32px;
     margin-bottom: 20px;
-    transform: scale(1.2);
+    transform: scale(1.1);
 } 
 .navBar .group {
     border-top: 1px solid #a0a0a0;
@@ -327,6 +327,7 @@ body {
 }
 
 .tracklistContainer h2,
+.artistContainer h2,
 .gridViewContainer h2
 {
     text-align: center;
@@ -334,4 +335,46 @@ body {
 
 [role="link"] {
     cursor: pointer;
+}
+
+.searchContainer {
+    background-color: #242424;
+    padding: 20px 28px;
+}
+
+.searchContainer h4 {
+    margin: 0;
+    font-weight: 300;
+}
+
+.searchContainer input[type="text"].searchInput {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 60px;
+    letter-spacing: 2px;
+}
+
+.searchResultRow {
+    padding: 15px 10px;
+}
+
+.searchResultRow:hover {
+    background-color: #282828;
+}
+
+.searchResultRow:last-child {
+    margin-bottom: 5px;
+}
+
+.searchResultRow .artistName span {
+    color: #fff;
+}
+
+.noResults {
+    display: block;
+    margin: 15px;
+    font-weight: 200;
 }

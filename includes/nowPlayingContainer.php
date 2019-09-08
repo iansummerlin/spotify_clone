@@ -138,21 +138,21 @@
 
             var track = JSON.parse(data);
 
-            $(".trackName span").text(track.title);
+            $(".trackInfo .trackName span").text(track.title);
 
             $.post("includes/handlers/ajax/getArtist.json.php", { artistId: track.artist }, (data) => {
                 var artist = JSON.parse(data);
-                $(".artistName span")
+                $(".trackInfo .artistName span")
                     .text(artist.name)
                     .attr("onclick", "openPage('artist.php?id=" + artist.id + "')");
             });
 
             $.post("includes/handlers/ajax/getArtwork.json.php", { albumId: track.album }, (data) => {
                 var album = JSON.parse(data);
-                $(".albumLink img")
+                $(".content .albumLink img")
                     .attr("src", album.artworkPath)
                     .attr("onclick", "openPage('album.php?id=" + album.id + "')");
-                $(".trackName span").attr("onclick", "openPage('album.php?id=" + album.id + "')");
+                $(".trackInfo .trackName span").attr("onclick", "openPage('album.php?id=" + album.id + "')");
             });
 
             audioElement.setTrack(track);
