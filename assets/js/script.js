@@ -20,6 +20,21 @@ function openPage(url) {
     history.pushState(null, null, url);
 }
 
+function createPlaylist() {
+    var playlistName = prompt("Please enter the name of your playlist");
+
+    if (playlistName != null) {
+        $.post("includes/handlers/ajax/createPlaylist.php", { name: playlistName, username: userLoggedIn })
+        .done(function(error) {
+            if (error != "") {
+                alert(error);
+                return;
+            }
+            openPage("playlist.php");
+        });
+    }
+}
+
 function formatTime(seconds) {
     var time = Math.round(seconds),
         minutes = Math.floor(time / 60),
@@ -47,7 +62,6 @@ function playSongFromArtistPage() {
 }
 
 function Audio() {
-
     this.currentlyPlaying;
     this.audio = document.createElement('audio');
 

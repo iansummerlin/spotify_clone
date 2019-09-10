@@ -378,3 +378,12 @@ body {
     margin: 15px;
     font-weight: 200;
 }
+
+.buttonItems button.button.green {
+    margin: 0 auto 10px auto;
+    display: block;
+}
+
+.playlistContainer {
+    padding: 10px 0;
+}
