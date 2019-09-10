@@ -387,3 +387,8 @@ body {
 .playlistContainer {
     padding: 10px 0;
 }
+
+.gridViewItem .playlistImage img {
+    border: 3px solid #282828;
+    margin: 10px;
+}
