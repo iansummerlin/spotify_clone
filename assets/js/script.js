@@ -61,6 +61,21 @@ function createPlaylist() {
     }
 }
 
+function removeFromPlaylist(button, playlistId) {
+    var songId = $(button).prev(".songId").val();
+    
+    if (songId) {
+        $.post("includes/handlers/ajax/removeFromPlaylist.php", { playlistId: playlistId, songId: songId })
+        .done(function(error) {
+            if (error != "") {
+                alert(error);
+                return;
+            }
+            openPage("playlist.php?id=" + playlistId);
+        });
+    }
+}
+
 function deletePlaylist(playlistId) {
     var deletePopup = confirm("Are you sure you want to delete this playlist?");
 
