@@ -2,11 +2,7 @@
 
     include("includes/includedFiles.php"); 
 
-    if (isset($_GET['id'])) {
-        $albumId = $_GET['id'];
-    } else {
-        header("Location: index.php");
-    }
+    (isset($_GET['id'])) ? $albumId = $_GET['id'] : header("Location: index.php");
 
     $album = new Album($con, $albumId);
     $artist = $album->getArtist();
@@ -31,7 +27,7 @@
             $songIdArray = $album->getSongIds();
 
             $i = 1;
-            foreach($songIdArray as $songId) {
+            foreach($songIdArray as $songId) {  
                 $albumSong = new Song($con, $songId);
                 $albumArtist = $albumSong->getArtist();
 
