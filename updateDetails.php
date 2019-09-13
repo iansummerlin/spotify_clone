@@ -1,4 +1,8 @@
-<?php include("includes/includedFiles.php"); ?>
+<?php 
+
+    include("includes/includedFiles.php"); 
+
+?>
 
 <div class="userDetails">
     <div class="container borderBottom">

@@ -7,6 +7,7 @@ var currentPlaylist = [],
     repeat = false,
     shuffle = false,
     userLoggedIn,
+    guestLoggedIn = 'user12734',
     timer;
 
 $(document).click(function(click) {
@@ -35,9 +36,18 @@ $(document).on("change", "select.playlist", function() {
     });
 });
 
+function checkGuest(username) {
+    if(username == guestLoggedIn) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function logout() {
     $.post("includes/handlers/ajax/logout.php", function() {
         location.reload();
+        return;
     });
 }
 
@@ -66,6 +76,11 @@ function updateEmail(emailClass) {
 } 
 
 function openPage(url) {
+    if (checkGuest(userLoggedIn) && url == 'updateDetails.php') {
+        alert("You need to be signed in to do that");
+        return;
+    }
+
     if (timer != null) clearTimeout(timer);
 
     if (url.indexOf("?") == -1) url = url + "?";
@@ -77,17 +92,21 @@ function openPage(url) {
 }
 
 function createPlaylist() {
-    var playlistName = prompt("Please enter the name of your playlist");
+    if(!checkGuest(userLoggedIn)) {
+        var playlistName = prompt("Please enter the name of your playlist");
 
-    if (playlistName != null) {
-        $.post("includes/handlers/ajax/createPlaylist.php", { name: playlistName, username: userLoggedIn })
-        .done(function(error) {
-            if (error != "") {
-                alert(error);
-                return;
-            }
-            openPage("myMusic.php");
-        });
+        if (playlistName != null) {
+            $.post("includes/handlers/ajax/createPlaylist.php", { name: playlistName, username: userLoggedIn })
+            .done(function(error) {
+                if (error != "") {
+                    alert(error);
+                    return;
+                }
+                openPage("myMusic.php");
+            });
+        }
+    } else {
+        alert("You need to be signed in to do that!");
     }
 }
 

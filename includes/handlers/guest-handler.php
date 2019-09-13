@@ -1,5 +1,4 @@
 <?php
-
     if (isset($_POST['signInGuest'])) {
         $username = 'user12734';
         $password = 'password';
