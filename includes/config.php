@@ -1,10 +1,14 @@
 <?php
+    /* Heroku ClearDB Database url */
+    // mysql://b8f8d855c93d08:2a552266@us-cdbr-iron-east-02.cleardb.net/heroku_669bd6ce71fcdec?reconnect=true
 
     ob_start();
     session_start();
     
     $timezone = date_default_timezone_set("Europe/London");
-    $con = mysqli_connect("localhost", "root", "andrino-1995", "spotify" );
+    // $con = mysqli_connect("localhost", "root", "andrino-1995", "spotify" ); // when using local phpmyadmin database
+    $con = mysqli_connect("us-cdbr-iron-east-02.cleardb.net", "b8f8d855c93d08", "2a552266", "heroku_669bd6ce71fcdec"); // when using ClearDB database with heroku
+
 
     if(mysqli_connect_errno()) {
         echo "Failed to connect" . mysqli_connect_errno();
