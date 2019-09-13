@@ -92,21 +92,22 @@ function openPage(url) {
 }
 
 function createPlaylist() {
-    if(!checkGuest(userLoggedIn)) {
-        var playlistName = prompt("Please enter the name of your playlist");
-
-        if (playlistName != null) {
-            $.post("includes/handlers/ajax/createPlaylist.php", { name: playlistName, username: userLoggedIn })
-            .done(function(error) {
-                if (error != "") {
-                    alert(error);
-                    return;
-                }
-                openPage("myMusic.php");
-            });
-        }
-    } else {
+    if(checkGuest(userLoggedIn)) {
         alert("You need to be signed in to do that!");
+        return;
+    }
+
+    var playlistName = prompt("Please enter the name of your playlist");
+
+    if (playlistName != null) {
+        $.post("includes/handlers/ajax/createPlaylist.php", { name: playlistName, username: userLoggedIn })
+        .done(function(error) {
+            if (error != "") {
+                alert(error);
+                return;
+            }
+            openPage("myMusic.php");
+        });
     }
 }
 
