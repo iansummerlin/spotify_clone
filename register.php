@@ -7,6 +7,7 @@
 
 	include("includes/handlers/register-handler.php");
 	include("includes/handlers/login-handler.php");
+	include("includes/handlers/guest-handler.php");
 
 	function getInputValue($name) {
 		if(isset($_POST[$name])) {
@@ -64,10 +65,11 @@
 						<input id="loginPassword" name="loginPassword" type="password" placeholder="Your password" required>
 					</p>
 
-					<button type="submit" name="loginButton">LOG IN</button>
+					<button type="submit" name="loginButton">LOGIN</button>
+					<button type="submit" name="signInGuest">SIGN IN AS GUEST</button>
 
 					<div class="hasAccountText">
-						<span id="hideLogin">Don't have an account yet? Signup here.</span>
+						<span id="hideLogin">Don't have an account yet? Sign up here.</span>
 					</div>
 					
 				</form>
